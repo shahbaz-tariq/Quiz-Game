@@ -71,12 +71,12 @@ class QuestionsData() {
         Question(
             "What is the binary equivalent of the decimal number 10?",
             listOf("1010", "0101", "1100", "1001"),
-            3
+            0
         ),
         Question(
             "In Java, what is the keyword used to create a loop that runs a specific number of times?",
-            listOf("for", "while", "do-while", "repeat-until"),
-            0
+            listOf("while","for", "do-while", "repeat-until"),
+            1
         ),
         Question(
             "What is the difference between HTTP and HTTPS?",
@@ -111,22 +111,22 @@ class QuestionsData() {
         Question(
             "What is an algorithm?",
             listOf(
-                "A step-by-step set of instructions to solve a problem",
                 "A computer program",
                 "A type of data structure",
-                "A programming language"
-            ),
-            0
+                "A programming language",
+                "A step-by-step set of instructions to solve a problem"
+                ),
+            3
         ),
         Question(
             "What is the difference between a variable and a constant in programming?",
             listOf(
-                "A variable can change its value, a constant cannot",
                 "A constant is always a number, a variable can be any data type",
                 "There is no difference",
+                "A variable can change its value, a constant cannot",
                 "A variable is used to store data, a constant is used to define functions"
             ),
-            0
+            2
         ),
         Question(
             "What is the purpose of debugging in programming?",
@@ -155,12 +155,12 @@ class QuestionsData() {
         Question(
             "In C++, what does the keyword 'delete' do?",
             listOf(
-                "Releases memory allocated for a dynamically created object",
                 "Deletes a variable from memory",
+                "Releases memory allocated for a dynamically created object",
                 "Ends a program",
                 "Prints a message to the console"
             ),
-            0
+            1
         ),
         Question(
             "What is the difference between a function and a method in programming?",
@@ -175,12 +175,12 @@ class QuestionsData() {
         Question(
             "What is the purpose of recursion in programming?",
             listOf(
-                "To solve a problem by calling itself repeatedly with smaller inputs",
                 "To break down a large problem into smaller subproblems",
                 "To store data efficiently",
+                "To solve a problem by calling itself repeatedly with smaller inputs",
                 "To improve the performance of a program"
             ),
-            0
+            2
         ),
         Question(
             "What is the concept of data structures in programming?",
@@ -195,22 +195,22 @@ class QuestionsData() {
         Question(
             "What is an array in programming?",
             listOf(
-                "A collection of data elements of the same type",
                 "A variable that can store multiple values",
                 "A function that returns multiple values",
-                "A block of code that is executed repeatedly"
+                "A block of code that is executed repeatedly",
+                "A collection of data elements of the same type"
             ),
-            0
+            3
         ),
         Question(
             "What is the difference between a while loop and a do-while loop in programming?",
             listOf(
-                "A do-while loop always executes at least once, a while loop may not",
                 "A while loop is faster, a do-while loop is slower",
                 "There is no difference",
+                "A do-while loop always executes at least once, a while loop may not",
                 "A do-while loop is only used for specific conditions, a while loop can be used for any condition"
             ),
-            0
+            2
         ),
         Question(
             "What is a conditional statement in programming?",
@@ -225,22 +225,22 @@ class QuestionsData() {
         Question(
             "What is the difference between a local variable and a global variable in programming?",
             listOf(
-                "A local variable is declared inside a function and is only accessible within that function, a global variable is declared outside a function and is accessible throughout the program",
                 "There is no difference",
+                "A local variable is declared inside a function and is only accessible within that function, a global variable is declared outside a function and is accessible throughout the program",
                 "A local variable is always initialized, a global variable may not be initialized",
                 "A global variable is always faster to access than a local variable"
             ),
-            0
+            1
         ),
         Question(
             "What is the purpose of comments in programming?",
             listOf(
-                "To explain the code and make it easier to understand",
                 "To add functionality to the program",
                 "To store data",
-                "To debug errors"
+                "To debug errors",
+                "To explain the code and make it easier to understand",
             ),
-            0
+            3
         ),
     )
 }

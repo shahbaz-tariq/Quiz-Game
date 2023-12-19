@@ -10,34 +10,34 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var binding: ActivityQuizBinding
     private var currentQuestionIndex = 0
     private var score = 0
+    private lateinit var category : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityQuizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val category = intent.getStringExtra("CATEGORY")
-        displayQuestion(category)
-
-        binding.btnSubmit.setOnClickListener {
-            if (binding.btnSubmit.text == "Play Again") {
-                playAgain()
-            } else {
-                submitAnswer()
-            }
-        }
-    }
-
-    private fun displayQuestion(category: String?) {
+        category = intent.getStringExtra("CATEGORY") ?: "GK"
 
         val questions = when (category) {
             "GK" -> QuestionsData().GkQuestions
             "CS" -> QuestionsData().CSQuestions
             "Programming" -> QuestionsData().ProgrammingQuestions
-            else -> emptyList()
+            else -> throw IllegalArgumentException("Invalid category: $category")
         }
 
-        if (questions.isNotEmpty()) {
+        displayQuestion(questions)
+
+        binding.btnSubmit.setOnClickListener {
+            if (binding.btnSubmit.text == "Play Again") {
+                playAgain()
+            } else {
+                submitAnswer(questions)
+            }
+        }
+    }
+
+    private fun displayQuestion(questions: List<Question>) {
 
             val currentQuestion = questions[currentQuestionIndex].options
             binding.tvQuestion.text = questions[currentQuestionIndex].question
@@ -48,13 +48,9 @@ class QuizActivity : AppCompatActivity() {
 
             binding.rgMain.clearCheck()
             binding.tvFeedback.text = ""
-        }else{
-            binding.tvQuestion.text = "No Questions available for this category."
-            binding.btnSubmit.isEnabled = false
-        }
     }
 
-    private fun submitAnswer() {
+    private fun submitAnswer(questions: List<Question>) {
 
         val selectedOption = binding.rgMain.checkedRadioButtonId
 
@@ -64,28 +60,27 @@ class QuizActivity : AppCompatActivity() {
         }
 
         val selectedOptionIndex = binding.rgMain.indexOfChild(findViewById(selectedOption))
-        val correctAnswer = QuestionsData().GkQuestions[currentQuestionIndex].correctAnswerIndex
+        val correctAnswer = questions[currentQuestionIndex].correctAnswerIndex
 
         if (selectedOptionIndex == correctAnswer) {
             binding.tvFeedback.text = "Correct!"
             score++
         } else {
             binding.tvFeedback.text =
-                "Incorrect. Correct Answer is: ${QuestionsData().GkQuestions[currentQuestionIndex].options[correctAnswer]}"
+                "Incorrect. Correct Answer is: ${questions[currentQuestionIndex].options[correctAnswer]}"
         }
 
-        if (currentQuestionIndex == QuestionsData().GkQuestions.lastIndex) {
+        if (currentQuestionIndex == questions.lastIndex) {
             binding.tvFeedback.text =
-                "Quiz Completed! Your score is $score out of ${QuestionsData().GkQuestions.size}"
+                "Quiz Completed! Your score is $score out of ${questions.size}"
             binding.btnSubmit.text = "Play Again"
         } else {
             currentQuestionIndex++
-            displayQuestion(intent.getStringExtra("CATEGORY"))
+            displayQuestion(questions)
         }
     }
 
     private fun playAgain() {
-        //displayQuestion(intent.getStringExtra("CATEGORY"))
         currentQuestionIndex = 0
         score = 0
         binding.btnSubmit.text = "Submit"
