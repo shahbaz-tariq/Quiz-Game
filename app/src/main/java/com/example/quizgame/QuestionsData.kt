@@ -223,14 +223,14 @@ class QuestionsData() {
             0
         ),
         Question(
-            "What is the difference between a local variable and a global variable in programming?",
+            "What is a correct syntax to output \"Hello World\" in Kotlin?",
             listOf(
-                "There is no difference",
-                "A local variable is declared inside a function and is only accessible within that function, a global variable is declared outside a function and is accessible throughout the program",
-                "A local variable is always initialized, a global variable may not be initialized",
-                "A global variable is always faster to access than a local variable"
+                "Console.WriteLine(\"Hello World\");",
+                "System.out.printline(\"Hello World\")",
+                "println(\"Hello World\")",
+                "cout << \"Hello World\";"
             ),
-            1
+            2
         ),
         Question(
             "What is the purpose of comments in programming?",
