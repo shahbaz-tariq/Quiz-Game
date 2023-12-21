@@ -3,7 +3,6 @@ package com.example.quizgame
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import com.example.quizgame.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,9 +12,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val btnGKQuiz = binding.btnGKQuiz
-        val btnCSQuiz = binding.btnCSQuiz
-        val btnProgrammingQuiz = binding.btnProgrammingQuiz
+        val btnGKQuiz = binding.gk
+        val btnCSQuiz = binding.cs
+        val btnProgrammingQuiz = binding.programming
 
         btnGKQuiz.setOnClickListener {
             startQuizActivity("GK")
